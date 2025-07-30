@@ -3,17 +3,17 @@ package arrays;
 public class SlidingWindow {
 
     public static int maxSum(int[] array, int window) {
-        int current = 0;
+        int currentSum = 0;
 
         for (int i = 0; i < window; i++){
-            current += array[i];
+            currentSum += array[i];
         }
 
-        int max = current;
+        int max = currentSum;
         for (int i = 1; i <= array.length - window; i++){
-            current = current - (array[i-1]) + (array [i + window -1]);
-            if (current > max){
-                max = current;
+            currentSum = currentSum - (array[i-1]) + (array [i + window -1]);
+            if (currentSum > max){
+                max = currentSum;
             }
         }
         return max;
