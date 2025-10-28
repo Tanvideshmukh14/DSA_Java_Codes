@@ -1,17 +1,23 @@
 package linkedList;
 
-public class AddAtFirstAndLastPosition {
+public class LinkedList {
+    Node head;
+    private int size;
+
+    LinkedList(){
+        this.size = 0;
+    }
     class Node{
         String data;
         Node next;
 
+
         Node(String data){
             this.data = data;
             this.next = null;
+            size++;
         }
     }
-
-    Node head;
 
     public void addFirst(String data){
         Node newNode = new Node(data);
@@ -46,9 +52,37 @@ public class AddAtFirstAndLastPosition {
         }
         System.out.println("NULL");
     }
-
+    public void deleteFirst(){
+        if (head == null){
+            System.out.println("The list is empty");
+            return;
+        }
+        size--;
+        head = head.next;
+    }
+    public void deleteLast(){
+        if (head == null){
+            System.out.println("The list is empty");
+            return;
+        }
+        size--;
+        if (head.next == null){
+            head = null;
+            return;
+        }
+        Node secondLast = head;
+        Node lastNode = head.next;
+        while(lastNode.next != null){
+            lastNode = lastNode.next;
+            secondLast = secondLast.next;
+        }
+        secondLast.next = null;
+    }
+    public int getSize(){
+    return size;
+    }
     public static void main(String[] args) {
-        AddAtFirstAndLastPosition ll = new AddAtFirstAndLastPosition();
+        LinkedList ll = new LinkedList();
 
         ll.addFirst("a");
         ll.addFirst("is");
@@ -57,5 +91,14 @@ public class AddAtFirstAndLastPosition {
         ll.addFirst("this");
 
         ll.printList();
+
+        ll.deleteFirst();
+        ll.printList();
+
+        ll.deleteLast();
+        ll.printList();
+
+        ll.addFirst("this");
+        System.out.println(ll.getSize());
     }
 }
