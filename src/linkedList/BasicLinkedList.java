@@ -2,16 +2,18 @@ package linkedList;
 
 
 public class BasicLinkedList {
-    class Node{
-        String data;
-        Node next;
+    static class Node{
+        static String data;
+        static Node next;
 
         Node(String data){
-            this.data = data;
-            this.next = null;
+            Node.data = data;
+            next = null;
         }
     }
+
     public static void main(String[] args) {
-        BasicLinkedList ll = new BasicLinkedList();
+      Node ll = new Node("10");
+
     }
 }
